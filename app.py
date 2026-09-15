@@ -516,6 +516,7 @@ st.write("")
 
 if st.button("⚖️ SEE FINAL RESULT", use_container_width=True):
 
+    st.balloons()
     st.markdown(
         """<div class="verdict-box">
 <div class="verdict-title">CASE VERDICT: ⚠️</div>
