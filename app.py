@@ -3,6 +3,7 @@ import streamlit as st
 # =========================
 # PAGE SETTINGS
 # =========================
+
 st.set_page_config(
     page_title="Complaint Management System",
     page_icon="📋",
@@ -12,11 +13,12 @@ st.set_page_config(
 # =========================
 # CUSTOM STYLE
 # =========================
+
 st.markdown("""
 <style>
 
 .stApp {
-    background-color: #f2f2f7;
+    background-color: #f2f2f7 !important;
 }
 
 .block-container {
@@ -54,7 +56,7 @@ footer {
    ========================= */
 
 .level-box {
-    background-color: #ffe5e5;
+    background-color: #ffe5e5 !important;
     border-radius: 16px;
     padding: 14px 16px;
     margin-bottom: 22px;
@@ -77,51 +79,57 @@ footer {
 }
 
 /* =========================
-   STREAMLIT CONTAINERS
+   COMPLAINT CARDS
    ========================= */
 
-div[data-testid="stVerticalBlockBorderWrapper"] {
+.complaint-card {
     background-color: #ffffff !important;
-    border-radius: 19px !important;
-    border: 1px solid #eeeeee !important;
+    border: 1px solid #e5e5e7;
+    border-radius: 19px;
+    padding: 18px;
+    margin-bottom: 12px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-    padding: 4px;
+}
+
+.complaint-title {
+    color: #1c1c1e !important;
+    font-size: 17px;
+    font-weight: 800;
     margin-bottom: 12px;
 }
 
-/* Force all text inside cards to dark */
-
-div[data-testid="stVerticalBlockBorderWrapper"] p,
-div[data-testid="stVerticalBlockBorderWrapper"] span,
-div[data-testid="stVerticalBlockBorderWrapper"] div,
-div[data-testid="stVerticalBlockBorderWrapper"] label {
-    color: #1c1c1e !important;
+.complaint-text {
+    color: #3a3a3c !important;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-/* Headings inside cards */
-
-div[data-testid="stVerticalBlockBorderWrapper"] h1,
-div[data-testid="stVerticalBlockBorderWrapper"] h2,
-div[data-testid="stVerticalBlockBorderWrapper"] h3,
-div[data-testid="stVerticalBlockBorderWrapper"] h4 {
-    color: #1c1c1e !important;
-}
-
-/* =========================
-   CRITICAL TEXT
-   ========================= */
-
-div[data-testid="stVerticalBlockBorderWrapper"] .stCaption {
+.critical-label {
     color: #d70015 !important;
+    font-size: 10px;
     font-weight: 800;
+    margin-top: 12px;
 }
 
 /* =========================
-   PERFORMANCE PROGRESS
+   PERFORMANCE
    ========================= */
 
-div[data-testid="stProgress"] {
-    margin-bottom: 10px;
+.performance-card {
+    background-color: #ffffff !important;
+    border: 1px solid #e5e5e7;
+    border-radius: 19px;
+    padding: 18px;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.performance-label {
+    color: #1c1c1e !important;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 4px;
 }
 
 /* =========================
@@ -129,7 +137,7 @@ div[data-testid="stProgress"] {
    ========================= */
 
 .notice-box {
-    background-color: #fff3cd;
+    background-color: #fff3cd !important;
     border-radius: 17px;
     padding: 16px;
     color: #5c4400 !important;
@@ -147,26 +155,30 @@ div[data-testid="stProgress"] {
    ========================= */
 
 .verdict-box {
-    background-color: #1c1c1e;
+    background-color: #1c1c1e !important;
     border-radius: 20px;
     padding: 20px;
     margin-top: 15px;
-    color: white !important;
+    text-align: center;
 }
 
 .verdict-title {
+    color: #ffffff !important;
     font-size: 23px;
     font-weight: 850;
-    text-align: center;
-    margin-bottom: 12px;
-    color: white !important;
+    margin-bottom: 14px;
 }
 
 .verdict-text {
     color: #d1d1d6 !important;
     font-size: 14px;
     line-height: 1.6;
-    text-align: center;
+}
+
+.verdict-highlight {
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 800;
 }
 
 /* =========================
@@ -231,116 +243,178 @@ st.markdown(
 # COMPLAINT 01
 # =========================
 
-with st.container(border=True):
-    st.markdown("### 🗣️ Excessive Talking")
+st.markdown("""
+<div class="complaint-card">
 
-    st.write(
-        "He can talk for 2 hours straight and somehow forgets "
-        "the other person exists."
-    )
+<div class="complaint-title">
+🗣️ Excessive Talking
+</div>
 
-    st.caption("🔴 CRITICAL")
+<div class="complaint-text">
+He can talk for 2 hours straight and somehow forgets
+the other person exists.
+</div>
+
+<div class="critical-label">
+🔴 CRITICAL
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
 # COMPLAINT 02
 # =========================
 
-with st.container(border=True):
-    st.markdown("### 👂 “I Can Listen” Department")
+st.markdown("""
+<div class="complaint-card">
 
-    st.write(
-        'He says "I can listen" but apparently listening '
-        "is an optional feature."
-    )
+<div class="complaint-title">
+👂 “I Can Listen” Department
+</div>
 
-    st.caption("🔴 CRITICAL")
+<div class="complaint-text">
+He says "I can listen" but apparently listening
+is an optional feature.
+</div>
+
+<div class="critical-label">
+🔴 CRITICAL
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
 # COMPLAINT 03
 # =========================
 
-with st.container(border=True):
-    st.markdown("### 🧠 Peace Disturbance")
+st.markdown("""
+<div class="complaint-card">
 
-    st.write(
-        "He repeatedly steals her peace of mind."
-    )
+<div class="complaint-title">
+🧠 Peace Disturbance
+</div>
 
-    st.caption("🔴 CRITICAL")
+<div class="complaint-text">
+He repeatedly steals her peace of mind.
+</div>
+
+<div class="critical-label">
+🔴 CRITICAL
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
 # COMPLAINT 04
 # =========================
 
-with st.container(border=True):
-    st.markdown("### 🛕 Unlimited Updates Package")
+st.markdown("""
+<div class="complaint-card">
 
-    st.write(
-        "Too many friends, family and Kovil updates. "
-        "No subscription requested."
-    )
+<div class="complaint-title">
+🛕 Unlimited Updates Package
+</div>
 
-    st.caption("🔴 CRITICAL")
+<div class="complaint-text">
+Too many friends, family and Kovil updates.
+No subscription requested.
+</div>
+
+<div class="critical-label">
+🔴 CRITICAL
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
 # COMPLAINT 05
 # =========================
 
-with st.container(border=True):
-    st.markdown("### 🍜 Emergency Support Failure")
+st.markdown("""
+<div class="complaint-card">
 
-    st.write(
-        'When she says "I’m hungry / tired / stressed or any tiny things about her", '
-        "his response level is:"
-    )
+<div class="complaint-title">
+🍜 Emergency Support Failure
+</div>
 
-    st.markdown("**404 — CARE NOT FOUND**")
+<div class="complaint-text">
+When she says "I’m hungry / tired / stressed or any tiny things about her",
+his response level is:
+<br><br>
+<b>404 — CARE NOT FOUND</b>
+</div>
 
-    st.caption("🔴 CRITICAL")
+<div class="critical-label">
+🔴 CRITICAL
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
 # COMPLAINT 06
 # =========================
 
-with st.container(border=True):
-    st.markdown("### 👑 Zeus Syndrome")
+st.markdown("""
+<div class="complaint-card">
 
-    st.write(
-        "Somehow believes he is always right."
-    )
+<div class="complaint-title">
+👑 Zeus Syndrome
+</div>
 
-    st.write(
-        "Evidence currently overwhelming. 💀"
-    )
+<div class="complaint-text">
+Somehow believes he is always right.
+<br><br>
+Evidence currently overwhelming. 💀
+</div>
 
-    st.caption("🔴 CRITICAL")
+<div class="critical-label">
+🔴 CRITICAL
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
 # COMPLAINT 07
 # =========================
 
-with st.container(border=True):
-    st.markdown("### ❓ Basic Knowledge Failure")
+st.markdown("""
+<div class="complaint-card">
 
-    st.write(
-        "After all this communication, still doesn't know "
-        "basic information about her."
-    )
+<div class="complaint-title">
+❓ Basic Knowledge Failure
+</div>
 
-    st.write("Where does she work? ❌")
-    st.write("Company name? ❌")
-    st.write(
-        "Do you actually know anything about her? "
-        "**Under review. 😭**"
-    )
+<div class="complaint-text">
+After all this communication, still doesn't know
+basic information about her.
+<br><br>
 
-    st.caption("🔴 CRITICAL")
+Where does she work? ❌
+<br>
+Company name? ❌
+<br>
+Do you actually know anything about her?
+<b>Under review. 😭</b>
+</div>
+
+<div class="critical-label">
+🔴 CRITICAL
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
@@ -352,29 +426,58 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.caption(
-    "Results based on highly questionable but accurate research."
+st.markdown(
+    '<div style="color:#8e8e93 !important; font-size:11px; margin-bottom:12px;">'
+    'Results based on highly questionable but accurate research.'
+    '</div>',
+    unsafe_allow_html=True
 )
 
-with st.container(border=True):
+st.markdown(
+    '<div class="performance-card">',
+    unsafe_allow_html=True
+)
 
-    st.write("**Talking — 100%**")
-    st.progress(1.0)
+st.markdown(
+    '<div class="performance-label">Talking — 100%</div>',
+    unsafe_allow_html=True
+)
+st.progress(1.0)
 
-    st.write("**Listening — 20%**")
-    st.progress(0.20)
+st.markdown(
+    '<div class="performance-label">Listening — 20%</div>',
+    unsafe_allow_html=True
+)
+st.progress(0.20)
 
-    st.write("**Knowing Me — 10%**")
-    st.progress(0.10)
+st.markdown(
+    '<div class="performance-label">Knowing Me — 10%</div>',
+    unsafe_allow_html=True
+)
+st.progress(0.10)
 
-    st.write("**Caring When I'm Stressed — 0%**")
-    st.progress(0.0)
+st.markdown(
+    '<div class="performance-label">Caring When I\'m Stressed — 0%</div>',
+    unsafe_allow_html=True
+)
+st.progress(0.0)
 
-    st.write("**Being Right According to Himself — 100%**")
-    st.progress(1.0)
+st.markdown(
+    '<div class="performance-label">Being Right According to Himself — 100%</div>',
+    unsafe_allow_html=True
+)
+st.progress(1.0)
 
-    st.write("**Stealing My Peace — 110% 💀**")
-    st.progress(1.0)
+st.markdown(
+    '<div class="performance-label">Stealing My Peace — 110% 💀</div>',
+    unsafe_allow_html=True
+)
+st.progress(1.0)
+
+st.markdown(
+    '</div>',
+    unsafe_allow_html=True
+)
 
 
 # =========================
@@ -388,17 +491,25 @@ st.markdown(
 
 st.markdown("""
 <div class="notice-box">
-<b>Yugan has been given multiple opportunities to improve.</b><br>
+
+<b>Yugan has been given multiple opportunities to improve.</b>
+<br>
+
 Unfortunately, he continues to talk instead of reading the complaint.
+
 <br><br>
-<b>Recommended action:</b><br>
+
+<b>Recommended action:</b>
+<br>
+
 Maybe try listening to her for a change. 😭
+
 </div>
 """, unsafe_allow_html=True)
 
 
 # =========================
-# VIEW VERDICT
+# SEE FINAL RESULT
 # =========================
 
 st.write("")
@@ -406,38 +517,22 @@ st.write("")
 if st.button("⚖️ SEE FINAL RESULT", use_container_width=True):
 
     st.markdown(
-        '<div class="verdict-box">',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        '<div class="verdict-title">CASE VERDICT: ⚠️</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        '<div class="verdict-text">',
-        unsafe_allow_html=True
-    )
-
-    st.write("Yugan has been officially warned.")
-
-    st.write(
-        "The complaints have been clearly documented, "
-        "the evidence has been reviewed, "
-        "and the situation remains unresolved."
-    )
-
-    st.write("**If this continues...**")
-
-    st.write(
-        "**She simply doesn't want to talk to him anymore.** 🙂"
-    )
-
-    st.write("No further warnings will be issued.")
-
-    st.markdown(
-        '</div></div>',
+        """<div class="verdict-box">
+<div class="verdict-title">CASE VERDICT: ⚠️</div>
+<div class="verdict-text">
+Yugan has been officially warned.
+<br><br>
+The complaints have been clearly documented,
+the evidence has been reviewed,
+and the situation remains unresolved.
+<br><br>
+If this continues...
+<br><br>
+<span class="verdict-highlight">She simply doesn't want to talk to him anymore. 🙂</span>
+<br><br>
+No further warnings will be issued.
+</div>
+</div>""",
         unsafe_allow_html=True
     )
 
@@ -448,7 +543,8 @@ if st.button("⚖️ SEE FINAL RESULT", use_container_width=True):
 
 st.markdown("""
 <div class="footer">
-YG-001 •Complaint Management System<br>
+YG-001 • Complaint Management System
+<br>
 This document has absolutely no legal authority. 😂
 </div>
 """, unsafe_allow_html=True)
